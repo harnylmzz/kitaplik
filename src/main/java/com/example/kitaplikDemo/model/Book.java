@@ -48,8 +48,7 @@ public class Book {
     @Column(name = "original_book_name")
     private String originalBookName;
 
-    @NotNull
-    @NotBlank
+   
     @Column(name = "press_time")
     private LocalDateTime pressTime;
 
