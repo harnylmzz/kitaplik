@@ -1,5 +1,7 @@
 package com.example.kitaplikDemo.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,28 +27,44 @@ public class Book {
     @Column(name = "id")
     private Long id;
 
+    @NotNull
+    @NotBlank
     @Column(name = "author_name")
     private String authorName;
 
+    @NotNull
+    @NotBlank
     @Column(name = "author_surname")
     private String authorSurname;
 
+    @NotNull
+    @NotBlank
     @Lob
     @Column(name = "book_name")
     private String bookName;
 
+    @NotNull
+    @NotBlank
     @Column(name = "original_book_name")
     private String originalBookName;
 
+    @NotNull
+    @NotBlank
     @Column(name = "press_time")
-    private String pressTime;
+    private LocalDateTime pressTime;
 
+    @NotNull
+    @NotBlank
     @Column(name = "editor_name")
     private String editorName;
 
+    @NotNull
+    @NotBlank
     @Column(name = "translator_name")
     private String translator_name;
 
+    @NotNull
+    @NotBlank
     @Column(name = "isbn")
     private String isbn;
     
