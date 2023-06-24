@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.BookService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.dto.requests.BookRequests;
 import com.example.kitaplikDemo.dto.responses.GetAllBookResponses;
 import com.example.kitaplikDemo.model.Book;
 import com.example.kitaplikDemo.repository.BookRepository;
@@ -36,6 +37,15 @@ public class BookManager implements BookService {
     @Override
     public Book getOneBook(Long bookId) {
         return bookRepository.findById(bookId).orElse(null);
+    }
+
+    @Override
+    public Book add(BookRequests bookRequests) {
+        Book book = modelMapperService.forRequest()
+        .map(bookRequests, Book.class);
+
+        return book;
+        
     }
 
 }

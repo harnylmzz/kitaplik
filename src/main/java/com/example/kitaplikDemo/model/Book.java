@@ -43,22 +43,15 @@ public class Book {
     @Column(name = "book_name")
     private String bookName;
 
-    @NotNull
-    @NotBlank
     @Column(name = "original_book_name")
     private String originalBookName;
 
-   
     @Column(name = "press_time")
     private LocalDateTime pressTime;
 
-    @NotNull
-    @NotBlank
     @Column(name = "editor_name")
     private String editorName;
 
-    @NotNull
-    @NotBlank
     @Column(name = "translator_name")
     private String translator_name;
 
@@ -66,5 +59,5 @@ public class Book {
     @NotBlank
     @Column(name = "isbn")
     private String isbn;
-    
+
 }
