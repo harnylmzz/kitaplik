@@ -27,19 +27,12 @@ public class Book {
     @Column(name = "id")
     private Long id;
 
-    @NotNull
-    @NotBlank
     @Column(name = "author_name")
     private String authorName;
 
-    @NotNull
-    @NotBlank
     @Column(name = "author_surname")
     private String authorSurname;
 
-    @NotNull
-    @NotBlank
-    @Lob
     @Column(name = "book_name")
     private String bookName;
 
@@ -53,10 +46,8 @@ public class Book {
     private String editorName;
 
     @Column(name = "translator_name")
-    private String translator_name;
+    private String translatorName;
 
-    @NotNull
-    @NotBlank
     @Column(name = "isbn")
     private String isbn;
 

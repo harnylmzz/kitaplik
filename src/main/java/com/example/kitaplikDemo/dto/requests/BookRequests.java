@@ -17,7 +17,7 @@ public class BookRequests {
     private String originalBookName;
     private LocalDateTime pressTime;
     private String editorName;
-    private String translator_name;
+    private String translatorName;
     private String isbn;
     
 }
