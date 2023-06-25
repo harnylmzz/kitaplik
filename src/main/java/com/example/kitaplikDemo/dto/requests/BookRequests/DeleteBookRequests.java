@@ -1,4 +1,4 @@
-package com.example.kitaplikDemo.dto.requests;
+package com.example.kitaplikDemo.dto.requests.BookRequests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
