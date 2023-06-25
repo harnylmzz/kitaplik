@@ -10,5 +10,5 @@ public interface BookService {
 
     List<GetAllBookResponses> getAllBooks();
     Book getOneBook(Long bookId);
-    Book add(BookRequests bookRequests);
+    void add(BookRequests bookRequests);
 }

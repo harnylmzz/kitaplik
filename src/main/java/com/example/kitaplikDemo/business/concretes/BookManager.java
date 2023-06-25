@@ -40,11 +40,10 @@ public class BookManager implements BookService {
     }
 
     @Override
-    public Book add(BookRequests bookRequests) {
+    public void add(BookRequests bookRequests) {
         Book book = modelMapperService.forRequest()
         .map(bookRequests, Book.class);
-
-        return book;
+        this.bookRepository.save(book);
         
     }
 
