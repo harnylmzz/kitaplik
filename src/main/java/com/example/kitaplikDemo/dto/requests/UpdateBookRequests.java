@@ -1,7 +1,6 @@
 package com.example.kitaplikDemo.dto.requests;
 
 import java.time.LocalDateTime;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookRequests {
-
+public class UpdateBookRequests {
+    
+    private Long id;
     private String authorName;
     private String authorSurname;
     private String bookName;
@@ -19,5 +19,4 @@ public class BookRequests {
     private String editorName;
     private String translatorName;
     private String isbn;
-    
 }
