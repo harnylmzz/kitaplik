@@ -27,6 +27,7 @@ public class Book {
     @Column(name = "id")
     private Long id;
 
+    @NotNull
     @Column(name = "author_name")
     private String authorName;
 

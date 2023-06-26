@@ -42,7 +42,7 @@ public class BooksController {
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody() @Valid CreateBookRequests bookRequests) {
+    public void add(@RequestBody() @Valid() CreateBookRequests bookRequests) {
          this.bookService.add(bookRequests);
     }
 
