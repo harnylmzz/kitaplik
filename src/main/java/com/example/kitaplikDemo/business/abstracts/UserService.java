@@ -3,7 +3,7 @@ package com.example.kitaplikDemo.business.abstracts;
 import java.util.List;
 
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
-import com.example.kitaplikDemo.dto.responses.GetAllUserResponses;
+import com.example.kitaplikDemo.dto.responses.User.GetAllUserResponses;
 import com.example.kitaplikDemo.model.User;
 
 public interface UserService {

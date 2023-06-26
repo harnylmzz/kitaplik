@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.kitaplikDemo.business.abstracts.UserService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
-import com.example.kitaplikDemo.dto.responses.GetAllUserResponses;
+import com.example.kitaplikDemo.dto.responses.User.GetAllUserResponses;
 import com.example.kitaplikDemo.model.User;
 import com.example.kitaplikDemo.repository.UserRepository;
 

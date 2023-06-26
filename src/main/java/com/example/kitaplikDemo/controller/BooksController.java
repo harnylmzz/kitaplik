@@ -17,7 +17,7 @@ import com.example.kitaplikDemo.business.abstracts.BookService;
 import com.example.kitaplikDemo.dto.requests.BookRequests.CreateBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.DeleteBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.UpdateBookRequests;
-import com.example.kitaplikDemo.dto.responses.GetAllBookResponses;
+import com.example.kitaplikDemo.dto.responses.Book.GetAllBookResponses;
 import com.example.kitaplikDemo.model.Book;
 
 import jakarta.validation.Valid;

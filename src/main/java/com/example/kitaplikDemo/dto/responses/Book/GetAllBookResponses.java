@@ -1,4 +1,4 @@
-package com.example.kitaplikDemo.dto.responses;
+package com.example.kitaplikDemo.dto.responses.Book;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

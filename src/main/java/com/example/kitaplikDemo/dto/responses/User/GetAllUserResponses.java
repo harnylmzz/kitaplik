@@ -1,4 +1,4 @@
-package com.example.kitaplikDemo.dto.requests.UserRequests;
+package com.example.kitaplikDemo.dto.responses.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserRequests {
+public class GetAllUserResponses {
 
     private String userName;
-    private String password;
+    
 }
