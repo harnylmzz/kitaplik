@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
 import com.example.kitaplikDemo.dto.responses.GetAllUserResponses;
 import com.example.kitaplikDemo.model.User;
 import com.example.kitaplikDemo.repository.UserRepository;
@@ -30,6 +31,18 @@ public class UserManager implements UserService{
         .collect(Collectors.toList());
 
         return getAllUserResponses;
+    }
+
+    @Override
+    public User getOneUser(Long userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
+
+    @Override
+    public void add(CreateUserRequests createUserRequests) {
+        User user = modelMapperService.forRequest()
+        .map(createUserRequests, User.class);
+        this.userRepository.save(user);
     }
     
 }
