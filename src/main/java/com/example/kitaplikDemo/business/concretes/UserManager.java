@@ -7,12 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
-import com.example.kitaplikDemo.dto.requests.BookRequests.UpdateBookRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.DeleteUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.UpdateUserRequests;
 import com.example.kitaplikDemo.dto.responses.User.GetAllUserResponses;
-import com.example.kitaplikDemo.model.Book;
 import com.example.kitaplikDemo.model.User;
 import com.example.kitaplikDemo.repository.UserRepository;
 
