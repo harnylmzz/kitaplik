@@ -1,6 +1,7 @@
 package com.example.kitaplikDemo.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -56,12 +57,20 @@ public class UserManager implements UserService {
 
     @Override
     public void update(UpdateUserRequests updateUserRequests) {
-        User inDbUser = userRepository.findById(updateUserRequests.getId()).get();
-        User user = new User();
-        user.setId(updateUserRequests.getId());
-        user.setUserName(updateUserRequests.getUserName());
-        user.setPassword(updateUserRequests.getPassword());
 
+        Optional<User> inDbUser = userRepository.findById(updateUserRequests.getId());
+
+        if (inDbUser.isPresent()) {
+
+            User user = inDbUser.get();
+
+            user.setUserName(updateUserRequests.getUserName());
+            user.setPassword(updateUserRequests.getPassword());
+
+            this.userRepository.save(user);
+        } else {
+
+        }
     }
 
 }

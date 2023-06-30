@@ -52,7 +52,7 @@ public class BooksController {
     }
 
     @PutMapping("/update")
-    public void update (@RequestBody UpdateBookRequests updateBookRequests) {
+    public void update (@RequestBody @PathVariable UpdateBookRequests updateBookRequests) {
         this.bookService.update(updateBookRequests);
     }
 
