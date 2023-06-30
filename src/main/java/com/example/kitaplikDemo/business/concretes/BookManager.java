@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.BookService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.core.Result.DataResult;
 import com.example.kitaplikDemo.dto.requests.BookRequests.CreateBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.DeleteBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.UpdateBookRequests;
@@ -24,7 +25,7 @@ public class BookManager implements BookService {
     private ModelMapperService modelMapperService;
 
     @Override
-    public List<GetAllBookResponses> getAllBooks() {
+    public DataResult<List<GetAllBookResponses>> getAllBooks() {
 
         List<Book> books = bookRepository.findAll();
         List<GetAllBookResponses> getAllBookResponses = books.stream()
@@ -32,7 +33,7 @@ public class BookManager implements BookService {
                         .map(book, GetAllBookResponses.class))
                 .collect(Collectors.toList());
 
-        return getAllBookResponses;
+        return new DataResult<List<GetAllBookResponses>>(getAllBookResponses, true, "All books were brought.");
 
     }
 
