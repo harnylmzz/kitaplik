@@ -14,5 +14,6 @@ public interface BookRepository extends JpaRepository<Book,Long> {
         boolean existsByAuthorNameAndSurname(String authorName, String authorSurname);
         List<Book> findByBookNameStartingWith(String bookName);
         List<Book> findByAuthorNameStartingWith(String authorName);
+        
 
 }
