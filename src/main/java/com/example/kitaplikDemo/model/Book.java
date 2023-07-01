@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,15 +27,22 @@ public class Book {
     private Long id;
 
     @NotNull
+    @NotBlank
     @Column(name = "author_name")
     private String authorName;
 
+    @NotNull
+    @NotBlank
     @Column(name = "author_surname")
     private String authorSurname;
 
+    @NotNull
+    @NotBlank
     @Column(name = "book_name")
     private String bookName;
 
+    @NotNull
+    @NotBlank
     @Column(name = "original_book_name")
     private String originalBookName;
 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.example.kitaplikDemo.business.abstracts.BookService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
 import com.example.kitaplikDemo.core.Result.DataResult;
+import com.example.kitaplikDemo.core.Result.Result;
+import com.example.kitaplikDemo.core.Result.SuccessResult;
 import com.example.kitaplikDemo.dto.requests.BookRequests.CreateBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.DeleteBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.UpdateBookRequests;
@@ -38,27 +40,30 @@ public class BookManager implements BookService {
     }
 
     @Override
-    public Book getOneBook(Long bookId) {
-        return bookRepository.findById(bookId).orElse(null);
+    public DataResult<Book> getOneBook(Long bookId) {
+        Book book = bookRepository.findById(bookId).orElse(null);
+        return new DataResult<Book>(book, true, "The book borught.");
     }
 
     @Override
-    public void add(CreateBookRequests bookRequests) {
+    public Result add(CreateBookRequests bookRequests) {
         Book book = modelMapperService.forRequest()
                 .map(bookRequests, Book.class);
         this.bookRepository.save(book);
+        return new SuccessResult("New book added.");
 
     }
 
     @Override
-    public void delete(DeleteBookRequests deleteBookRequests) {
+    public Result delete(DeleteBookRequests deleteBookRequests) {
         Book book = modelMapperService.forRequest()
                 .map(deleteBookRequests, Book.class);
         this.bookRepository.delete(book);
+        return new SuccessResult("The book deleted.");
     }
 
     @Override
-    public void update(UpdateBookRequests updateBookRequests) {
+    public Result update(UpdateBookRequests updateBookRequests) {
         Book inDbBook = bookRepository.findById(updateBookRequests.getId()).get();
         Book book = new Book();
         book.setId(updateBookRequests.getId());
@@ -69,6 +74,9 @@ public class BookManager implements BookService {
         book.setOriginalBookName(updateBookRequests.getOriginalBookName());
         book.setPressTime(updateBookRequests.getPressTime());
         book.setTranslatorName(updateBookRequests.getTranslatorName());
+        book.setIsbn(updateBookRequests.getIsbn());
+        this.bookRepository.save(book);
+        return new SuccessResult("The book updated.");
 
     }
 

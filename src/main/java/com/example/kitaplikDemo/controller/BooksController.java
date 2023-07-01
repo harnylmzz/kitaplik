@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.kitaplikDemo.business.abstracts.BookService;
 import com.example.kitaplikDemo.core.Result.DataResult;
+import com.example.kitaplikDemo.core.Result.Result;
 import com.example.kitaplikDemo.dto.requests.BookRequests.CreateBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.DeleteBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.UpdateBookRequests;
@@ -23,6 +24,7 @@ import com.example.kitaplikDemo.model.Book;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+
 
 @AllArgsConstructor
 @RestController
@@ -37,24 +39,25 @@ public class BooksController {
     }
 
     @GetMapping("/{bookId}")
-    public Book getOneBook (@PathVariable Long bookId) {
+    public DataResult<Book> getOneBook (@PathVariable Long bookId) {
         return this.bookService.getOneBook(bookId);
     }
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody() @Valid() CreateBookRequests bookRequests) {
-         this.bookService.add(bookRequests);
+    public Result add(@RequestBody() @Valid CreateBookRequests bookRequests) {
+      return this.bookService.add(bookRequests);
     }
 
     @DeleteMapping("/delete")
-    public void delete (DeleteBookRequests deleteBookRequests) {
-        this.bookService.delete(deleteBookRequests);
+    public Result delete (DeleteBookRequests deleteBookRequests) {
+       return this.bookService.delete(deleteBookRequests);
     }
 
     @PutMapping("/update")
-    public void update (@RequestBody @PathVariable UpdateBookRequests updateBookRequests) {
-        this.bookService.update(updateBookRequests);
+    public Result update (@RequestBody UpdateBookRequests updateBookRequests) {
+       return this.bookService.update(updateBookRequests);
+
     }
 
 }
