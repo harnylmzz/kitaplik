@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.core.Result.DataResult;
+import com.example.kitaplikDemo.core.Result.Result;
+import com.example.kitaplikDemo.core.Result.SuccessResult;
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.DeleteUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.UpdateUserRequests;
@@ -25,7 +28,7 @@ public class UserManager implements UserService {
     private ModelMapperService modelMapperService;
 
     @Override
-    public List<GetAllUserResponses> getAllUsers() {
+    public DataResult<List<GetAllUserResponses>> getAllUsers() {
 
         List<User> users = userRepository.findAll();
         List<GetAllUserResponses> getAllUserResponses = users.stream()
@@ -33,30 +36,34 @@ public class UserManager implements UserService {
                         .map(user, GetAllUserResponses.class))
                 .collect(Collectors.toList());
 
-        return getAllUserResponses;
+        return new DataResult<List<GetAllUserResponses>>(getAllUserResponses, true, "All users were brought.");
     }
 
     @Override
-    public User getOneUser(Long userId) {
-        return userRepository.findById(userId).orElse(null);
+    public DataResult<User> getOneUser(Long userId) {
+
+        User user = userRepository.findById(userId).orElse(null);
+        return new DataResult<User>(user, true, "The user brought.");
     }
 
     @Override
-    public void add(CreateUserRequests createUserRequests) {
+    public Result add(CreateUserRequests createUserRequests) {
         User user = modelMapperService.forRequest()
                 .map(createUserRequests, User.class);
         this.userRepository.save(user);
+        return new SuccessResult("User added.");
     }
 
     @Override
-    public void delete(DeleteUserRequests deleteUserRequest) {
+    public Result delete(DeleteUserRequests deleteUserRequest) {
         User user = modelMapperService.forRequest()
                 .map(deleteUserRequest, User.class);
         this.userRepository.delete(user);
+        return new SuccessResult("User deleted");
     }
 
     @Override
-    public void update(UpdateUserRequests updateUserRequests) {
+    public Result update(UpdateUserRequests updateUserRequests) {
 
         Optional<User> inDbUser = userRepository.findById(updateUserRequests.getId());
 
@@ -69,9 +76,8 @@ public class UserManager implements UserService {
 
             this.userRepository.save(user);
         } else {
-           
-            
         }
+        return new SuccessResult("User updated.");
     }
 
 }

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
+import com.example.kitaplikDemo.core.Result.DataResult;
+import com.example.kitaplikDemo.core.Result.Result;
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.DeleteUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.UpdateUserRequests;
@@ -31,28 +33,31 @@ public class UsersController {
     private UserService userService;
 
     @GetMapping("/getall")
-    public List<GetAllUserResponses> getAll() {
+    public DataResult<List<GetAllUserResponses>> getAll() {
         return this.userService.getAllUsers();
     }
 
     @GetMapping("/{userId}")
-    public User getOneUser(@PathVariable Long userId) {
+    public DataResult<User> getOneUser(@PathVariable Long userId) {
         return this.userService.getOneUser(userId);
     }
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid CreateUserRequests createUserRequests) {
+    public Result add(@RequestBody @Valid CreateUserRequests createUserRequests) {
         this.userService.add(createUserRequests);
+        return this.userService.add(createUserRequests);
     }
 
     @DeleteMapping("/delete")
-    public void delete(DeleteUserRequests deleteUserRequests) {
+    public Result delete(DeleteUserRequests deleteUserRequests) {
         this.userService.delete(deleteUserRequests);
+        return this.userService.delete(deleteUserRequests);
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody UpdateUserRequests updateUserRequests) {
+    public Result update(@RequestBody UpdateUserRequests updateUserRequests) {
         this.userService.update(updateUserRequests);
+        return this.userService.update(updateUserRequests);
     }
 }
