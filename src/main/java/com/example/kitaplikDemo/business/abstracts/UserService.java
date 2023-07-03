@@ -2,8 +2,8 @@ package com.example.kitaplikDemo.business.abstracts;
 
 import java.util.List;
 
-import com.example.kitaplikDemo.core.Result.DataResult;
-import com.example.kitaplikDemo.core.Result.Result;
+import com.example.kitaplikDemo.core.result.DataResult;
+import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.DeleteUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.UpdateUserRequests;

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
-import com.example.kitaplikDemo.core.Result.DataResult;
-import com.example.kitaplikDemo.core.Result.Result;
+import com.example.kitaplikDemo.core.result.DataResult;
+import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.DeleteUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.UpdateUserRequests;

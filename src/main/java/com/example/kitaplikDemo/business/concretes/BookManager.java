@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.BookService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
-import com.example.kitaplikDemo.core.Result.DataResult;
-import com.example.kitaplikDemo.core.Result.Result;
-import com.example.kitaplikDemo.core.Result.SuccessResult;
+import com.example.kitaplikDemo.core.result.DataResult;
+import com.example.kitaplikDemo.core.result.Result;
+import com.example.kitaplikDemo.core.result.SuccessResult;
 import com.example.kitaplikDemo.dto.requests.BookRequests.CreateBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.DeleteBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.UpdateBookRequests;

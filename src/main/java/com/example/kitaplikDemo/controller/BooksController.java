@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.kitaplikDemo.business.abstracts.BookService;
-import com.example.kitaplikDemo.core.Result.DataResult;
-import com.example.kitaplikDemo.core.Result.Result;
+import com.example.kitaplikDemo.core.result.DataResult;
+import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.dto.requests.BookRequests.CreateBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.DeleteBookRequests;
 import com.example.kitaplikDemo.dto.requests.BookRequests.UpdateBookRequests;

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
-import com.example.kitaplikDemo.core.Result.DataResult;
-import com.example.kitaplikDemo.core.Result.Result;
-import com.example.kitaplikDemo.core.Result.SuccessResult;
+import com.example.kitaplikDemo.core.result.DataResult;
+import com.example.kitaplikDemo.core.result.Result;
+import com.example.kitaplikDemo.core.result.SuccessResult;
 import com.example.kitaplikDemo.dto.requests.UserRequests.CreateUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.DeleteUserRequests;
 import com.example.kitaplikDemo.dto.requests.UserRequests.UpdateUserRequests;
