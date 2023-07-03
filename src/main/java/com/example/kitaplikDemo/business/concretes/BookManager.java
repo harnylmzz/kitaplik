@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.BookService;
+import com.example.kitaplikDemo.business.rules.BookBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
@@ -25,6 +26,7 @@ public class BookManager implements BookService {
 
     private BookRepository bookRepository;
     private ModelMapperService modelMapperService;
+    private BookBusinessRules bookBusinessRules;
 
     @Override
     public DataResult<List<GetAllBookResponses>> getAllBooks() {
@@ -46,9 +48,14 @@ public class BookManager implements BookService {
     }
 
     @Override
-    public Result add(CreateBookRequests bookRequests) {
+    public Result add(CreateBookRequests createBookRequests) {
+
+        this.bookBusinessRules.checkIfBookNameExists(createBookRequests.getBookName());
+        this.bookBusinessRules.checkIfAuthorNameAndAuthorSurnameExists(createBookRequests.getAuthorName(),
+                createBookRequests.getAuthorSurname());
+
         Book book = modelMapperService.forRequest()
-                .map(bookRequests, Book.class);
+                .map(createBookRequests, Book.class);
         this.bookRepository.save(book);
         return new SuccessResult("New book added.");
 
