@@ -1,4 +1,4 @@
-package com.example.kitaplikDemo.dto.responses.Book;
+package com.example.kitaplikDemo.dto.responses.book;
 
 import lombok.Data;
 
