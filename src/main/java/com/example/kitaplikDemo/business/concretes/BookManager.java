@@ -50,9 +50,9 @@ public class BookManager implements BookService {
     @Override
     public Result add(CreateBookRequests createBookRequests) {
 
-        this.bookBusinessRules.checkIfBookNameExists(createBookRequests.getBookName());
-        this.bookBusinessRules.checkIfAuthorNameAndAuthorSurnameExists(createBookRequests.getAuthorName(),
-                createBookRequests.getAuthorSurname());
+        this.bookBusinessRules.checkIfIsbn(createBookRequests.getIsbn());
+        
+                
 
         Book book = modelMapperService.forRequest()
                 .map(createBookRequests, Book.class);

@@ -13,15 +13,9 @@ public class BookBusinessRules {
 
     private BookRepository bookRepository;
 
-    public void checkIfBookNameExists(String bookName) {
-        if (this.bookRepository.existsByBookName(bookName)) {
+    public void checkIfIsbn(String isbn) {
+        if(this.bookRepository.existsByIsbn(isbn)) {
             throw new BusinessException("Book already exists.");
-        }
-    }
-
-    public void checkIfAuthorNameAndAuthorSurnameExists(String authorName, String authorSurname) {
-        if (this.bookRepository.existsByAuthorNameAndAuthorSurname(authorName, authorSurname)) {
-            throw new BusinessException("Author already exists.");
         }
     }
 }

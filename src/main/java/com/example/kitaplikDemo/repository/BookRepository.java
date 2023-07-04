@@ -8,8 +8,8 @@ import com.example.kitaplikDemo.model.Book;
 
 public interface BookRepository extends JpaRepository<Book,Long> {
 
-        boolean existsByBookName(String bookName);
-        boolean existsByAuthorNameAndAuthorSurname(String authorName, String authorSurname);
+        boolean existsByIsbn(String isbn);
+        
         List<Book> findByBookNameStartingWith(String bookName);
         List<Book> findByAuthorNameStartingWith(String authorName);
         

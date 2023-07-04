@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
+import com.example.kitaplikDemo.business.rules.UserBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
@@ -26,6 +27,7 @@ public class UserManager implements UserService {
 
     private UserRepository userRepository;
     private ModelMapperService modelMapperService;
+    private UserBusinessRules userBusinessRules;
 
     @Override
     public DataResult<List<GetAllUserResponses>> getAllUsers() {
@@ -48,6 +50,9 @@ public class UserManager implements UserService {
 
     @Override
     public Result add(CreateUserRequests createUserRequests) {
+
+        this.userBusinessRules.checkIfUserNameExists(createUserRequests.getUserName());
+
         User user = modelMapperService.forRequest()
                 .map(createUserRequests, User.class);
         this.userRepository.save(user);
