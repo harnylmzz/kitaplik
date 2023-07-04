@@ -57,6 +57,9 @@ public class Book {
     @Column(name = "isbn")
     private String isbn;
 
+    @Column(name = "stock")
+    private Long stock;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

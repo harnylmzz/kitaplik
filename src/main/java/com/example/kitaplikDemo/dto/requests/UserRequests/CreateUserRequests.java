@@ -25,6 +25,6 @@ public class CreateUserRequests {
 
     @NotNull
     @NotBlank
-    @Size(min = 6)
+    @Size(min = 6) //TODO: Regex ekle ve araştır.  
     private String password;
 }

@@ -44,7 +44,7 @@ public class UserManager implements UserService {
     @Override
     public DataResult<User> getOneUser(Long userId) {
 
-        User user = userRepository.findById(userId).orElse(null);
+        User user = userRepository.findById(userId).orElse(null); //TODO: exception eklenecek
         return new DataResult<User>(user, true, "The user brought.");
     }
 

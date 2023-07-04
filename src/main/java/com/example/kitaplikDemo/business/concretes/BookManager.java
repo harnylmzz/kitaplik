@@ -43,7 +43,7 @@ public class BookManager implements BookService {
 
     @Override
     public DataResult<Book> getOneBook(Long bookId) {
-        Book book = bookRepository.findById(bookId).orElse(null);
+        Book book = bookRepository.findById(bookId).orElse(null); //TODO: exception eklenecek
         return new DataResult<Book>(book, true, "The book borught.");
     }
 
@@ -80,6 +80,7 @@ public class BookManager implements BookService {
         book.setPressTime(updateBookRequests.getPressTime());
         book.setTranslatorName(updateBookRequests.getTranslatorName());
         book.setIsbn(updateBookRequests.getIsbn());
+        
         this.bookRepository.save(book);
         return new SuccessResult("The book updated.");
 
