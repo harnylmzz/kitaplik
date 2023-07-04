@@ -49,11 +49,9 @@ public class BookManager implements BookService {
 
     @Override
     public Result add(CreateBookRequests createBookRequests) {
-
+        
         this.bookBusinessRules.checkIfIsbn(createBookRequests.getIsbn());
         
-                
-
         Book book = modelMapperService.forRequest()
                 .map(createBookRequests, Book.class);
         this.bookRepository.save(book);

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class GetAllUserResponses {
 
     private Long id;
+    private String email;
     private String userName;
     
 }
