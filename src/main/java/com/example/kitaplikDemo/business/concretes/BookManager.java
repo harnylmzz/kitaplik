@@ -17,6 +17,7 @@ import com.example.kitaplikDemo.dto.requests.bookRequests.UpdateBookRequests;
 import com.example.kitaplikDemo.dto.responses.book.GetAllBookResponses;
 import com.example.kitaplikDemo.model.Book;
 import com.example.kitaplikDemo.repository.BookRepository;
+import com.example.kitaplikDemo.repository.CategoryRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -27,6 +28,7 @@ public class BookManager implements BookService {
     private BookRepository bookRepository;
     private ModelMapperService modelMapperService;
     private BookBusinessRules bookBusinessRules;
+    private CategoryRepository categoryRepository;
 
     @Override
     public DataResult<List<GetAllBookResponses>> getAllBooks() {
@@ -43,17 +45,20 @@ public class BookManager implements BookService {
 
     @Override
     public DataResult<Book> getOneBook(Long bookId) {
-        Book book = bookRepository.findById(bookId).orElse(null); //TODO: exception eklenecek
+        Book book = bookRepository.findById(bookId).orElse(null); // TODO: exception eklenecek
         return new DataResult<Book>(book, true, "The book borught.");
     }
 
     @Override
     public Result add(CreateBookRequests createBookRequests) {
-        
+
         this.bookBusinessRules.checkIfIsbn(createBookRequests.getIsbn());
-        
+
         Book book = modelMapperService.forRequest()
                 .map(createBookRequests, Book.class);
+
+        book.setId(createBookRequests.getCategoryId());
+
         this.bookRepository.save(book);
         return new SuccessResult("New book added.");
 
@@ -80,7 +85,8 @@ public class BookManager implements BookService {
         book.setPressTime(updateBookRequests.getPressTime());
         book.setTranslatorName(updateBookRequests.getTranslatorName());
         book.setIsbn(updateBookRequests.getIsbn());
-        
+        book.setStock(updateBookRequests.getStock());
+
         this.bookRepository.save(book);
         return new SuccessResult("The book updated.");
 

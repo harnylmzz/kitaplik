@@ -42,8 +42,9 @@ public class CreateBookRequests {
     private String isbn;
 
     @NotNull
-    Long stock;
+    private Long stock;
 
+    @NotNull
     private Long categoryId;
     
 }

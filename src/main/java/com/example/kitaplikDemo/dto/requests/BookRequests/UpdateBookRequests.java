@@ -19,4 +19,5 @@ public class UpdateBookRequests {
     private String editorName;
     private String translatorName;
     private String isbn;
+    private Long stock;
 }

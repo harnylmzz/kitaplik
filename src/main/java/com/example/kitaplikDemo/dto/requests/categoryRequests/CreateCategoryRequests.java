@@ -10,10 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateCategoryRequests {
-    
+
+    private Long id;
+
     @NotNull
     @NotBlank
     private String categoryName;
-
+    
+    @NotNull
     private Long bookId;
 }

@@ -56,7 +56,7 @@ public class UserManager implements UserService {
         User user = modelMapperService.forRequest()
                 .map(createUserRequests, User.class);
         this.userRepository.save(user);
-        return new SuccessResult("User added.");
+        return new SuccessResult("The user added.");
     }
 
     @Override
@@ -64,7 +64,7 @@ public class UserManager implements UserService {
         User user = modelMapperService.forRequest()
                 .map(deleteUserRequest, User.class);
         this.userRepository.delete(user);
-        return new SuccessResult("User deleted");
+        return new SuccessResult("The user deleted");
     }
 
     @Override
@@ -82,7 +82,7 @@ public class UserManager implements UserService {
             this.userRepository.save(user);
         } else {
         }
-        return new SuccessResult("User updated.");
+        return new SuccessResult("The user updated.");
     }
 
 }
