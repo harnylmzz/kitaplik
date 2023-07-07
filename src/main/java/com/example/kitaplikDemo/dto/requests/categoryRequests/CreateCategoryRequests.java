@@ -17,6 +17,5 @@ public class CreateCategoryRequests {
     @NotBlank
     private String categoryName;
     
-    @NotNull
     private Long bookId;
 }

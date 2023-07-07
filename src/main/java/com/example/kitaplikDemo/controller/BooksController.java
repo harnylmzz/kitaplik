@@ -25,12 +25,11 @@ import com.example.kitaplikDemo.model.Book;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
-
 @AllArgsConstructor
 @RestController
-@RequestMapping("api/book")
+@RequestMapping("api/books")
 public class BooksController {
-    
+
     private BookService bookService;
 
     @GetMapping("/getall")
@@ -39,24 +38,26 @@ public class BooksController {
     }
 
     @GetMapping("/{bookId}")
-    public DataResult<Book> getOneBook (@PathVariable Long bookId) {
+    public DataResult<Book> getOneBook(@PathVariable Long bookId) {
         return this.bookService.getOneBook(bookId);
     }
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Result add(@RequestBody() @Valid CreateBookRequests bookRequests) {
-      return this.bookService.add(bookRequests);
+
+        return this.bookService.add(bookRequests);
+
     }
 
     @DeleteMapping("/delete")
-    public Result delete (DeleteBookRequests deleteBookRequests) {
-       return this.bookService.delete(deleteBookRequests);
+    public Result delete(DeleteBookRequests deleteBookRequests) {
+        return this.bookService.delete(deleteBookRequests);
     }
 
     @PutMapping("/update")
-    public Result update (@RequestBody UpdateBookRequests updateBookRequests) {
-       return this.bookService.update(updateBookRequests);
+    public Result update(@RequestBody UpdateBookRequests updateBookRequests) {
+        return this.bookService.update(updateBookRequests);
 
     }
 

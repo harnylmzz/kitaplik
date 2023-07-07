@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateBookRequests {
 
+    private Long id;
+
     @NotNull
     @NotBlank
     private String authorName;
@@ -44,7 +46,7 @@ public class CreateBookRequests {
     @NotNull
     private Long stock;
 
-    @NotNull
     private Long categoryId;
+    
     
 }

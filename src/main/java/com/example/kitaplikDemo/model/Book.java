@@ -28,42 +28,41 @@ import lombok.NoArgsConstructor;
 @Table(name = "book")
 public class Book {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
 
-    @Column(name = "author_name")
-    private String authorName;
+  @Column(name = "author_name")
+  private String authorName;
 
-    @Column(name = "author_surname")
-    private String authorSurname;
+  @Column(name = "author_surname")
+  private String authorSurname;
 
-    @Column(name = "book_name")
-    private String bookName;
+  @Column(name = "book_name")
+  private String bookName;
 
-    @Column(name = "original_book_name")
-    private String originalBookName;
+  @Column(name = "original_book_name")
+  private String originalBookName;
 
-    @Column(name = "press_time")
-    private LocalDateTime pressTime;
+  @Column(name = "press_time")
+  private LocalDateTime pressTime;
 
-    @Column(name = "editor_name")
-    private String editorName;
+  @Column(name = "editor_name")
+  private String editorName;
 
-    @Column(name = "translator_name")
-    private String translatorName;
+  @Column(name = "translator_name")
+  private String translatorName;
 
-    @Column(name = "isbn")
-    private String isbn;
+  @Column(name = "isbn")
+  private String isbn;
 
-    @Column(name = "stock")
-    private Long stock;
+  @Column(name = "stock")
+  private Long stock;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    Category category;
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JoinColumn(name = "category_id")
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  Category category;
 
 }

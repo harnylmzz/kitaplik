@@ -1,6 +1,7 @@
 package com.example.kitaplikDemo.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class BookManager implements BookService {
     private BookBusinessRules bookBusinessRules;
     private CategoryRepository categoryRepository;
 
+
     @Override
     public DataResult<List<GetAllBookResponses>> getAllBooks() {
 
@@ -57,7 +59,7 @@ public class BookManager implements BookService {
         Book book = modelMapperService.forRequest()
                 .map(createBookRequests, Book.class);
 
-        book.setId(createBookRequests.getCategoryId());
+                
 
         this.bookRepository.save(book);
         return new SuccessResult("New book added.");
