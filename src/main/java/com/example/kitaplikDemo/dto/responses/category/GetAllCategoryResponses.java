@@ -11,5 +11,4 @@ public class GetAllCategoryResponses {
     
     private Long id;
     private String categoryName;
-    private Long bookId;
 }

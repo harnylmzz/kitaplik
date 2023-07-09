@@ -13,5 +13,6 @@ public class GetAllBookResponses {
     private String bookName;
     private String authorName;
     private String authorSurname;
+    private boolean isItRented;
     
 }

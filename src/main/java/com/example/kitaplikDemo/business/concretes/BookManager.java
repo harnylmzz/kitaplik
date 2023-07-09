@@ -18,7 +18,6 @@ import com.example.kitaplikDemo.dto.requests.bookRequests.UpdateBookRequests;
 import com.example.kitaplikDemo.dto.responses.book.GetAllBookResponses;
 import com.example.kitaplikDemo.model.Book;
 import com.example.kitaplikDemo.repository.BookRepository;
-import com.example.kitaplikDemo.repository.CategoryRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -29,8 +28,6 @@ public class BookManager implements BookService {
     private BookRepository bookRepository;
     private ModelMapperService modelMapperService;
     private BookBusinessRules bookBusinessRules;
-    private CategoryRepository categoryRepository;
-
 
     @Override
     public DataResult<List<GetAllBookResponses>> getAllBooks() {
@@ -58,8 +55,6 @@ public class BookManager implements BookService {
 
         Book book = modelMapperService.forRequest()
                 .map(createBookRequests, Book.class);
-
-                
 
         this.bookRepository.save(book);
         return new SuccessResult("New book added.");

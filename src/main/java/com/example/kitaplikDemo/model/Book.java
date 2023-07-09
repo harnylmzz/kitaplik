@@ -45,6 +45,15 @@ public class Book {
   @Column(name = "original_book_name")
   private String originalBookName;
 
+  @Column(name = "number_of_pages")
+  private int numberOfPages;
+
+  @Column(name = "number_of_prints")
+  private String numberOfPrints;
+
+  @Column(name = "skin_type")
+  private String skinType;
+
   @Column(name = "press_time")
   private LocalDateTime pressTime;
 
@@ -54,11 +63,20 @@ public class Book {
   @Column(name = "translator_name")
   private String translatorName;
 
+  @Column(name = "publisher")
+  private String publisher;
+
+  @Column(name = "dimensions")
+  private String dimensions;
+
   @Column(name = "isbn")
   private String isbn;
 
   @Column(name = "stock")
   private Long stock;
+
+  @Column(name = "is_it_rented")
+  private boolean isItRented;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   @JoinColumn(name = "category_id")
