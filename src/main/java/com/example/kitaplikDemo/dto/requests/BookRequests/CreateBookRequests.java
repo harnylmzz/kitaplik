@@ -62,6 +62,8 @@ public class CreateBookRequests {
 
     private String numberOfPrints;
 
+    private Long languageId;
+
     private Long categoryId;
 
 }

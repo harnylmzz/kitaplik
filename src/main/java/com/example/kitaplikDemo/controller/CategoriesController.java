@@ -38,7 +38,7 @@ public class CategoriesController {
     }
 
     @GetMapping("/{categoryId}")
-    public DataResult<Category> getOneBook(@PathVariable Long id) {
+    public DataResult<Category> getOneCategory(@PathVariable Long id) {
        return this.categoryService.getOneCategory(id);
     }
 
