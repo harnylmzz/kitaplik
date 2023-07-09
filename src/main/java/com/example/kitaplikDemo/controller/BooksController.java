@@ -50,15 +50,15 @@ public class BooksController {
 
     }
 
-    @DeleteMapping("/delete")
-    public Result delete(DeleteBookRequests deleteBookRequests) {
-        return this.bookService.delete(deleteBookRequests);
-    }
-
     @PutMapping("/update")
     public Result update(@RequestBody UpdateBookRequests updateBookRequests) {
         return this.bookService.update(updateBookRequests);
 
+    }
+
+    @DeleteMapping("/delete")
+    public Result delete(DeleteBookRequests deleteBookRequests) {
+        return this.bookService.delete(deleteBookRequests);
     }
 
 }

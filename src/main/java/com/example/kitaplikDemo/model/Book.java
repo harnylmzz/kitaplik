@@ -78,7 +78,7 @@ public class Book {
   @Column(name = "is_it_rented")
   private boolean isItRented;
 
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
   @JoinColumn(name = "category_id")
   @OnDelete(action = OnDeleteAction.CASCADE)
   Category category;
