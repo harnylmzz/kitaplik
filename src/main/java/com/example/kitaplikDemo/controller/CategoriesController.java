@@ -38,8 +38,8 @@ public class CategoriesController {
     }
 
     @GetMapping("/{categoryId}")
-    public DataResult<Category> getOneCategory(@PathVariable Long id) {
-       return this.categoryService.getOneCategory(id);
+    public DataResult<Category> getOneCategory(@PathVariable Long categoryId) {
+       return this.categoryService.getOneCategory(categoryId);
     }
 
     @PostMapping("/add")

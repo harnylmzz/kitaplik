@@ -40,8 +40,8 @@ public class CategoryManager implements CategoryService {
     }
 
     @Override
-    public DataResult<Category> getOneCategory(Long bookId) {
-        Category category = categoryRepository.findById(bookId).orElse(null);
+    public DataResult<Category> getOneCategory(Long categoryId) {
+        Category category = categoryRepository.findById(categoryId).orElse(null);
         return new DataResult<Category>(category, true, "Category brought."); // TODO: exception eklenecek
     }
 

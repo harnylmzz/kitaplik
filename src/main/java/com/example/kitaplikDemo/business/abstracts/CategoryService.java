@@ -14,7 +14,7 @@ public interface CategoryService {
 
     DataResult<List<GetAllCategoryResponses>> getAllCategories();
 
-    DataResult<Category> getOneCategory(Long bookId);
+    DataResult<Category> getOneCategory(Long categoryId);
 
     Result add(CreateCategoryRequests createCategoryRequests);
 
