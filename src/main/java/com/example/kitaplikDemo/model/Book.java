@@ -79,13 +79,12 @@ public class Book {
   private boolean isItRented;
 
   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-  @JoinColumn(name = "language_id")
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  Language language;
-
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
   @JoinColumn(name = "category_id")
   @OnDelete(action = OnDeleteAction.CASCADE)
   Category category;
+
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+  @JoinColumn(name = "language_id", referencedColumnName = "id")
+  private Language language;
 
 }
