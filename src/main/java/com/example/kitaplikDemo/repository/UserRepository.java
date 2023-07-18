@@ -9,5 +9,6 @@ import com.example.kitaplikDemo.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByUserName(String userName);
-    List<User> findByUserNameStartingWith(String userName);    
+    List<User> findByUserNameStartingWith(String userName);
+    User findByUserName(String userName);    
 }

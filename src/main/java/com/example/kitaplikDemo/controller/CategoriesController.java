@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.kitaplikDemo.business.abstracts.CategoryService;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
-import com.example.kitaplikDemo.dto.requests.bookRequests.DeleteBookRequests;
 import com.example.kitaplikDemo.dto.requests.categoryRequests.CreateCategoryRequests;
 import com.example.kitaplikDemo.dto.requests.categoryRequests.DeleteCategoryRequests;
 import com.example.kitaplikDemo.dto.requests.categoryRequests.UpdateCategoryRequests;
