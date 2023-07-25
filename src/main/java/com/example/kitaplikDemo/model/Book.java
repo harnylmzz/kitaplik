@@ -2,9 +2,6 @@ package com.example.kitaplikDemo.model;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -76,13 +73,12 @@ public class Book {
   @Column(name = "is_it_rented")
   private boolean isItRented;
 
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-  @JoinColumn(name = "language_id", referencedColumnName = "language")
-  private Language language;
-
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+  @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")
-  @OnDelete(action = OnDeleteAction.CASCADE)
-  Category category;
+  private Category category;
+
+  @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+  @JoinColumn(name = "language_id")
+  private Language language;
 
 }

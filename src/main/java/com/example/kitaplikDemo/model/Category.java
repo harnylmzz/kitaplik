@@ -31,4 +31,5 @@ public class Category {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Book> books;
+
 }
