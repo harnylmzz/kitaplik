@@ -16,4 +16,5 @@ public interface UserService {
     Result add(CreateUserRequests createUserRequests);
     Result delete(DeleteUserRequests deleteUserRequest);
     Result update(UpdateUserRequests updateUserRequests);
+    User getOneUserByUserName(String userName);
 }

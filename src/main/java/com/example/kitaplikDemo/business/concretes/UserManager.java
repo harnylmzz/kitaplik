@@ -85,4 +85,10 @@ public class UserManager implements UserService {
         return new SuccessResult("The user updated.");
     }
 
+    @Override
+    public User getOneUserByUserName(String userName) {
+        
+        return userRepository.findByUserName(userName);
+    }
+
 }
