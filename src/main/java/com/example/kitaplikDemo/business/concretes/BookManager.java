@@ -89,4 +89,7 @@ public class BookManager implements BookService {
 
     }
 
+    public BookManager() {
+    }
+
 }
