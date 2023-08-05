@@ -25,14 +25,14 @@ import com.example.kitaplikDemo.dto.responses.book.GetAllBookResponses;
 import com.example.kitaplikDemo.model.Book;
 import com.example.kitaplikDemo.repository.BookRepository;
 
-@ExtendWith(MockitoExtension.class) //mockito'yu junit ile entegre etmeye yarıyor
+@ExtendWith(MockitoExtension.class) // mockito'yu junit ile entegre etmeye yarıyor
 public class BookManagerTest {
 
         @Mock
         private BookRepository bookRepository;
 
         @Mock
-        private ModelMapperService modelMapperService; 
+        private ModelMapperService modelMapperService;
 
         @InjectMocks
         private BookService bookService = new BookManager(); // BookManager nesnesini burada oluşturuyoruz.
@@ -40,7 +40,7 @@ public class BookManagerTest {
         @DisplayName("Test the getAllBooks method")
         @Test
         public void testGetAllBooks() {
-                
+
                 List<Book> mockBooks = Arrays.asList(
                                 new Book(null, null, null, null, null, 1, "Book 1", null, null, null, null, null, null,
                                                 null, null,
@@ -55,18 +55,14 @@ public class BookManagerTest {
                 when(bookRepository.findAll()).thenReturn(mockBooks);
                 Mockito.when(modelMapperService.forResponse()).thenReturn(new ModelMapper());
 
-                // Act
                 DataResult<List<GetAllBookResponses>> result = bookService.getAllBooks();
 
-                // Assert
                 assertTrue(result.isSuccess());
                 assertEquals("All books were brought.", result.getMessage());
 
                 List<GetAllBookResponses> responses = result.getData();
                 assertEquals(3, responses.size());
-                // Add more assertions if needed for each GetAllBookResponses object.
 
-                // Verify that the bookRepository.findAll() method was called exactly once.
                 verify(bookRepository, times(1)).findAll();
 
         }

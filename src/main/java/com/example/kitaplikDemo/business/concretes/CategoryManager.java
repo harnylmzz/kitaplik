@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.CategoryService;
+import com.example.kitaplikDemo.business.rules.CategoryBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
@@ -26,6 +27,7 @@ public class CategoryManager implements CategoryService {
 
     private CategoryRepository categoryRepository;
     private ModelMapperService modelMapperService;
+    private CategoryBusinessRules categoryBusinessRules;
 
     @Override
     public DataResult<List<GetAllCategoryResponses>> getAllCategories() {
@@ -47,6 +49,9 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public Result add(CreateCategoryRequests createCategoryRequests) {
+
+        this.categoryBusinessRules.checkIfCategoryName(createCategoryRequests.getCategoryName());
+
         Category category = modelMapperService.forRequest()
                 .map(createCategoryRequests, Category.class);
         this.categoryRepository.save(category);
