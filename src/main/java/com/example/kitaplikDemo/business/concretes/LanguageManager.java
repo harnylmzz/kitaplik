@@ -1,6 +1,7 @@
 package com.example.kitaplikDemo.business.concretes;
 
 import com.example.kitaplikDemo.business.abstracts.LanguageService;
+import com.example.kitaplikDemo.business.rules.LanguageBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
@@ -25,6 +26,7 @@ public class LanguageManager implements LanguageService {
 
     private LanguageRepository languageRepository;
     private ModelMapperService modelMapperService;
+    private LanguageBusinessRules languageBusinessRules;
 
     @Override
     public DataResult<List<GetAllLanguageResponses>> getAll() {
@@ -48,6 +50,9 @@ public class LanguageManager implements LanguageService {
 
     @Override
     public Result add(CreateLanguageRequests createLanguageRequests) {
+
+        this.languageBusinessRules.checkIfLanguageName(createLanguageRequests.getLanguage());
+
         Language language = modelMapperService.forRequest()
                 .map(createLanguageRequests, Language.class);
         this.languageRepository.save(language);

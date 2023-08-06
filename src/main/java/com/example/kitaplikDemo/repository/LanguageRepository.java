@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.kitaplikDemo.model.Language;
 
 public interface LanguageRepository extends JpaRepository<Language, Long> {
+
+    boolean existsByLanguageName(String name);
     
 }
