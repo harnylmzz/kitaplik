@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
 import com.example.kitaplikDemo.business.rules.UserBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.core.exceptions.UserNotFoundException;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.core.result.SuccessResult;
@@ -28,6 +30,7 @@ public class UserManager implements UserService {
     private UserRepository userRepository;
     private ModelMapperService modelMapperService;
     private UserBusinessRules userBusinessRules;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public DataResult<List<GetAllUserResponses>> getAllUsers() {
@@ -44,7 +47,7 @@ public class UserManager implements UserService {
     @Override
     public DataResult<User> getOneUser(Long userId) {
 
-        User user = userRepository.findById(userId).orElse(null); //TODO: exception eklenecek
+        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
         return new DataResult<User>(user, true, "The user brought.");
     }
 
@@ -55,6 +58,7 @@ public class UserManager implements UserService {
 
         User user = modelMapperService.forRequest()
                 .map(createUserRequests, User.class);
+        user.setPassword(passwordEncoder.encode(createUserRequests.getPassword()));
         this.userRepository.save(user);
         return new SuccessResult("The user added.");
     }
@@ -87,7 +91,7 @@ public class UserManager implements UserService {
 
     @Override
     public User getOneUserByUserName(String userName) {
-        
+
         return userRepository.findByUserName(userName);
     }
 
