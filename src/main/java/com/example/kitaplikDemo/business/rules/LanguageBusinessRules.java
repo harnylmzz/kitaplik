@@ -13,8 +13,8 @@ public class LanguageBusinessRules {
 
     private LanguageRepository languageRepository;
 
-    public void checkIfLanguageName(String name) {
-        if (this.languageRepository.existsByLanguageName(name)) {
+    public void checkIfLanguageName(String language) {
+        if (this.languageRepository.existsByLanguage(language)) {
             throw new BusinessException("Language already exists.");
         }
     }
