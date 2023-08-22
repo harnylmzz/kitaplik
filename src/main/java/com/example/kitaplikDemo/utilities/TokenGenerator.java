@@ -12,7 +12,12 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 @Component
+@AllArgsConstructor
+@NoArgsConstructor
 public class TokenGenerator {
 
     @Value("${jwt-variables.KEY}")
@@ -24,6 +29,7 @@ public class TokenGenerator {
     @Value("${jwt-variables.EXPIRES_ACCESS_TOKEN_MINUTE}")
     private long EXPIRES_ACCESS_TOKEN_MINUTE;
 
+    
     public String generateToken(Authentication authentication) {
 
         String userName = ((UserDetails) authentication.getPrincipal()).getUsername();
