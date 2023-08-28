@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.kitaplikDemo.business.abstracts.UserService;
@@ -30,7 +29,6 @@ public class UserManager implements UserService {
     private UserRepository userRepository;
     private ModelMapperService modelMapperService;
     private UserBusinessRules userBusinessRules;
-    private PasswordEncoder passwordEncoder;
 
     @Override
     public DataResult<List<GetAllUserResponses>> getAllUsers() {
@@ -58,7 +56,6 @@ public class UserManager implements UserService {
 
         User user = modelMapperService.forRequest()
                 .map(createUserRequests, User.class);
-        user.setPassword(passwordEncoder.encode(createUserRequests.getPassword()));
         this.userRepository.save(user);
         return new SuccessResult("The user added.");
     }
