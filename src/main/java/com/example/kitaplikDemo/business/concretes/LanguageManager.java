@@ -9,7 +9,6 @@ import com.example.kitaplikDemo.core.result.SuccessResult;
 import com.example.kitaplikDemo.dto.requests.languageRequests.CreateLanguageRequests;
 import com.example.kitaplikDemo.dto.requests.languageRequests.DeleteLanguageRequests;
 import com.example.kitaplikDemo.dto.requests.languageRequests.UpdateLanguageRequests;
-import com.example.kitaplikDemo.dto.responses.category.GetAllCategoryResponses;
 import com.example.kitaplikDemo.dto.responses.language.GetAllLanguageResponses;
 import com.example.kitaplikDemo.model.Language;
 import com.example.kitaplikDemo.repository.LanguageRepository;

@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  redisdb:
+    image: "redis"
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks: 
+      - shared-net 
+  postgresdb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      restart: always
+      POSTGRES_DB: kitaplik
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_ROOT_PASSWORD: root
