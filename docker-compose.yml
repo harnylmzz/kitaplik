@@ -19,3 +19,15 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
       POSTGRES_ROOT_PASSWORD: root
+    networks: 
+      - shared-net 
+    volumes:
+      - ./postgres/data:/backup
+
+  
+networks:
+  shared-net:
+    driver: bridge
+
+
+      
