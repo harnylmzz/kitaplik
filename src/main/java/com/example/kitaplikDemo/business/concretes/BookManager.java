@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.kitaplikDemo.business.abstracts.BookService;
 import com.example.kitaplikDemo.business.rules.BookBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.core.exceptions.DataNotFoundException;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.core.result.SuccessResult;
@@ -43,7 +44,7 @@ public class BookManager implements BookService {
 
     @Override
     public DataResult<Book> getOneBook(Long bookId) {
-        Book book = bookRepository.findById(bookId).orElse(null); // TODO: exception eklenecek
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new DataNotFoundException("Book not found!"));
         return new DataResult<Book>(book, true, "The book borught.");
     }
 

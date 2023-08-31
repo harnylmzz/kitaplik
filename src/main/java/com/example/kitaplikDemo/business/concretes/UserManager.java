@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.kitaplikDemo.business.abstracts.UserService;
 import com.example.kitaplikDemo.business.rules.UserBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
-import com.example.kitaplikDemo.core.exceptions.UserNotFoundException;
+import com.example.kitaplikDemo.core.exceptions.DataNotFoundException;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.core.result.SuccessResult;
@@ -45,7 +45,7 @@ public class UserManager implements UserService {
     @Override
     public DataResult<User> getOneUser(Long userId) {
 
-        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        User user = userRepository.findById(userId).orElseThrow(() -> new DataNotFoundException("User not found!"));
         return new DataResult<User>(user, true, "The user brought.");
     }
 

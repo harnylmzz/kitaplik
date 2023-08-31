@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.kitaplikDemo.business.abstracts.CategoryService;
 import com.example.kitaplikDemo.business.rules.CategoryBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.core.exceptions.DataNotFoundException;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.core.result.SuccessResult;
@@ -43,8 +44,9 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public DataResult<Category> getOneCategory(Long categoryId) {
-        Category category = categoryRepository.findById(categoryId).orElse(null);
-        return new DataResult<Category>(category, true, "Category brought."); // TODO: exception eklenecek
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new DataNotFoundException("Category not found!"));
+        return new DataResult<Category>(category, true, "Category brought.");
     }
 
     @Override

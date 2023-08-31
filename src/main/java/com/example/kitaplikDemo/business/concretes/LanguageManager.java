@@ -3,6 +3,7 @@ package com.example.kitaplikDemo.business.concretes;
 import com.example.kitaplikDemo.business.abstracts.LanguageService;
 import com.example.kitaplikDemo.business.rules.LanguageBusinessRules;
 import com.example.kitaplikDemo.config.modelmapper.ModelMapperService;
+import com.example.kitaplikDemo.core.exceptions.DataNotFoundException;
 import com.example.kitaplikDemo.core.result.DataResult;
 import com.example.kitaplikDemo.core.result.Result;
 import com.example.kitaplikDemo.core.result.SuccessResult;
@@ -43,7 +44,8 @@ public class LanguageManager implements LanguageService {
     @Override
     public DataResult<Language> getOneLanguage(Long languageId) {
 
-        Language language = languageRepository.findById(languageId).orElse(null); //TODO: exception eklenecek
+        Language language = languageRepository.findById(languageId)
+                .orElseThrow(() -> new DataNotFoundException("Language not found!"));
         return new DataResult<Language>(language, true, "Language brought.");
     }
 
@@ -75,7 +77,7 @@ public class LanguageManager implements LanguageService {
             language.setId(updateLanguageRequests.getId());
             language.setLanguage(updateLanguageRequests.getLanguage());
             this.languageRepository.save(language);
-        }else {
+        } else {
 
         }
         return new SuccessResult("The language updated.");
