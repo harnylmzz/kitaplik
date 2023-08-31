@@ -24,10 +24,32 @@ services:
     volumes:
       - ./postgres/data:/backup
 
+  app:
+    image: kitaplik
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgresdb
+    environment:
+      - spring.datasource.url=jdbc:postgresql://postgresdb:5432/kitaplik
+      - SERVER_PORT=8082
+      - spring.redis.host=redis
+      - spring.redis.port=6379
+    restart: always
+    networks: 
+      - shared-net
+
+
   
 networks:
   shared-net:
     driver: bridge
+
+
+  
 
 
       
