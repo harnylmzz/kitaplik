@@ -1,4 +1,4 @@
-package com.example.kitaplikDemo.dto.responses.user;
+package com.example.kitaplikDemo.dto.responses.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

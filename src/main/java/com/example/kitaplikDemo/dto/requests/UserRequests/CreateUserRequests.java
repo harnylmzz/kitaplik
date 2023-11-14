@@ -1,4 +1,4 @@
-package com.example.kitaplikDemo.dto.requests.userRequests;
+package com.example.kitaplikDemo.dto.requests.UserRequests;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

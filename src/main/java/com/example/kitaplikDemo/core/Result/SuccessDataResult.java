@@ -1,4 +1,4 @@
-package com.example.kitaplikDemo.core.result;
+package com.example.kitaplikDemo.core.Result;
 
 public class SuccessDataResult<T> extends DataResult<T> {
 

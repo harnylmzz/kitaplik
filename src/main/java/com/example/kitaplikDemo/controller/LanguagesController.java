@@ -1,8 +1,8 @@
 package com.example.kitaplikDemo.controller;
 
 import com.example.kitaplikDemo.business.abstracts.LanguageService;
-import com.example.kitaplikDemo.core.result.DataResult;
-import com.example.kitaplikDemo.core.result.Result;
+import com.example.kitaplikDemo.core.Result.DataResult;
+import com.example.kitaplikDemo.core.Result.Result;
 import com.example.kitaplikDemo.dto.requests.languageRequests.CreateLanguageRequests;
 import com.example.kitaplikDemo.dto.requests.languageRequests.DeleteLanguageRequests;
 import com.example.kitaplikDemo.dto.requests.languageRequests.UpdateLanguageRequests;
